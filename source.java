@@ -44,12 +44,15 @@ class Player {
                 Tree tree = new Tree(cellIndex, size, isMine, isDormant);
                 game.trees.add(tree);
             }
+			
+			game.possibleActions.clear();
             int numberOfPossibleActions = in.nextInt(); // all legal actions
             if (in.hasNextLine()) {
                 in.nextLine();
             }
             for (int i = 0; i < numberOfPossibleActions; i++) {
                 String possibleAction = in.nextLine(); // try printing something from here to start with
+				game.possibleActions.add(Action.parse(possibleAction));
             }
 
             // Write an action using System.out.println()
