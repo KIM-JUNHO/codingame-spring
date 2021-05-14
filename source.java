@@ -44,14 +44,70 @@ class Player {
             }
             for (int i = 0; i < numberOfPossibleActions; i++) {
                 String possibleAction = in.nextLine(); // try printing something from here to start with
+                
+                Action action = Action.parse(possibleAction);
+                System.err.println(action);
+
+                if(Action.COMPLETE.equals(action.type)) {
+                    System.out.println(action);
+                }
             }
 
             // Write an action using System.out.println()
             // To debug: System.err.println("Debug messages...");
 
-
             // GROW cellIdx | SEED sourceIdx targetIdx | COMPLETE cellIdx | WAIT <message>
             System.out.println("WAIT");
         }
+    }
+}
+
+class Action {
+
+    static final String WAIT = "WAIT";
+    static final String SEED = "SEED";
+    static final String GROW = "GROW";
+    static final String COMPLETE = "COMPLETE";
+    String type;
+    Integer targetCellIdx;
+    Integer sourceCellIdx;
+
+    public Action(String type, Integer sourceCellIdx, Integer targetCellIdx) {
+        this.type = type;
+        this.targetCellIdx = targetCellIdx;
+        this.sourceCellIdx = sourceCellIdx;
+    }
+
+    public Action(String type, Integer targetCellIdx) {
+        this(type, null, targetCellIdx);
+    }
+
+    public Action(String type) {
+        this(type, null, null);
+    }
+
+    static Action parse(String action) {
+        String[] parts = action.split(" ");
+        switch (parts[0]) {
+            case WAIT:
+                return new Action(WAIT);
+            case SEED:
+                return new Action(SEED, Integer.valueOf(parts[1]), Integer.valueOf(parts[2]));
+            case GROW:
+            case COMPLETE:
+            default:
+                return new Action(parts[0], Integer.valueOf(parts[1]));
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (WAIT.equalsIgnoreCase(type)) {
+            return Action.WAIT;
+        }
+        if (SEED.equalsIgnoreCase(type)) {
+            return String.format("%s %d %d", SEED, sourceCellIdx, targetCellIdx);
+        }
+        return String.format("%s %d", type, targetCellIdx);
     }
 }
