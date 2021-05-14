@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
- 
+
 class Player {
 
     public static void main(String args[]) {
@@ -33,9 +33,9 @@ class Player {
             game.opponentSun = in.nextInt(); // opponent's sun points
             game.opponentScore = in.nextInt(); // opponent's score
             game.opponentIsWaiting = in.nextInt() != 0; // whether your opponent is asleep until the next day
-            
-			game.trees.clear();
-			int numberOfTrees = in.nextInt(); // the current amount of trees
+
+            game.trees.clear();
+            int numberOfTrees = in.nextInt(); // the current amount of trees
             for (int i = 0; i < numberOfTrees; i++) {
                 int cellIndex = in.nextInt(); // location of this tree
                 int size = in.nextInt(); // size of this tree: 0-3
@@ -44,13 +44,13 @@ class Player {
                 Tree tree = new Tree(cellIndex, size, isMine, isDormant);
                 game.trees.add(tree);
             }
-			
-			game.possibleActions.clear();
+
+            game.possibleActions.clear();
             int numberOfPossibleActions = in.nextInt(); // all legal actions
             in.nextLine();
             for (int i = 0; i < numberOfPossibleActions; i++) {
                 String possibleAction = in.nextLine(); // try printing something from here to start with
-				game.possibleActions.add(Action.parse(possibleAction));
+                game.possibleActions.add(Action.parse(possibleAction));
             }
 
             Action action = game.getNextAction();
