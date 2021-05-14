@@ -33,12 +33,16 @@ class Player {
             int oppSun = in.nextInt(); // opponent's sun points
             int oppScore = in.nextInt(); // opponent's score
             boolean oppIsWaiting = in.nextInt() != 0; // whether your opponent is asleep until the next day
-            int numberOfTrees = in.nextInt(); // the current amount of trees
+            
+			game.trees.clear();
+			int numberOfTrees = in.nextInt(); // the current amount of trees
             for (int i = 0; i < numberOfTrees; i++) {
                 int cellIndex = in.nextInt(); // location of this tree
                 int size = in.nextInt(); // size of this tree: 0-3
                 boolean isMine = in.nextInt() != 0; // 1 if this is your tree
                 boolean isDormant = in.nextInt() != 0; // 1 if this tree is dormant
+                Tree tree = new Tree(cellIndex, size, isMine, isDormant);
+                game.trees.add(tree);
             }
             int numberOfPossibleActions = in.nextInt(); // all legal actions
             if (in.hasNextLine()) {
