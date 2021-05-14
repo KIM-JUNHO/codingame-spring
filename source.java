@@ -19,6 +19,9 @@ class Player {
             int neigh3 = in.nextInt();
             int neigh4 = in.nextInt();
             int neigh5 = in.nextInt();
+            int[] neighs = new int[]{neigh0, neigh1, neigh2, neigh3, neigh4, neigh5};
+            Cell cell = new Cell(index, richness, neighs);
+            game.board.add(cell);
         }
 
         // game loop
