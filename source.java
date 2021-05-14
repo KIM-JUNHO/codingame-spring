@@ -26,13 +26,13 @@ class Player {
 
         // game loop
         while (true) {
-            int day = in.nextInt(); // the game lasts 24 days: 0-23
-            int nutrients = in.nextInt(); // the base score you gain from the next COMPLETE action
-            int sun = in.nextInt(); // your sun points
-            int score = in.nextInt(); // your current score
-            int oppSun = in.nextInt(); // opponent's sun points
-            int oppScore = in.nextInt(); // opponent's score
-            boolean oppIsWaiting = in.nextInt() != 0; // whether your opponent is asleep until the next day
+            game.day = in.nextInt(); // the game lasts 24 days: 0-23
+            game.nutrients = in.nextInt(); // the base score you gain from the next COMPLETE action
+            game.mySun = in.nextInt(); // your sun points
+            game.myScore = in.nextInt(); // your current score
+            game.opponentSun = in.nextInt(); // opponent's sun points
+            game.opponentScore = in.nextInt(); // opponent's score
+            game.opponentIsWaiting = in.nextInt() != 0; // whether your opponent is asleep until the next day
             
 			game.trees.clear();
 			int numberOfTrees = in.nextInt(); // the current amount of trees
