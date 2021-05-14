@@ -47,20 +47,14 @@ class Player {
 			
 			game.possibleActions.clear();
             int numberOfPossibleActions = in.nextInt(); // all legal actions
-            if (in.hasNextLine()) {
-                in.nextLine();
-            }
+            in.nextLine();
             for (int i = 0; i < numberOfPossibleActions; i++) {
                 String possibleAction = in.nextLine(); // try printing something from here to start with
 				game.possibleActions.add(Action.parse(possibleAction));
             }
 
-            // Write an action using System.out.println()
-            // To debug: System.err.println("Debug messages...");
-
-
-            // GROW cellIdx | SEED sourceIdx targetIdx | COMPLETE cellIdx | WAIT <message>
-            System.out.println("WAIT");
+            Action action = game.getNextAction();
+            System.out.println(action);
         }
     }
 }
