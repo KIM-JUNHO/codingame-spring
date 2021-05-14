@@ -1,15 +1,14 @@
-import java.util.*;
-import java.io.*;
-import java.math.*;
-
-/**
- * Auto-generated code below aims at helping you parse
- * the standard input according to the problem statement.
- **/
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+ 
 class Player {
 
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
+
+        Game game = new Game();
+
         int numberOfCells = in.nextInt(); // 37
         for (int i = 0; i < numberOfCells; i++) {
             int index = in.nextInt(); // 0 is the center cell, the next cells spiral outwards
